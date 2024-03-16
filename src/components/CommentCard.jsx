@@ -40,7 +40,7 @@ const CommentCard = ({ id, name, email, body, onDeleteComment, onUpdateComment }
               className="rounded-full justify-self-start "
             />
           </div>
-          <h3 className="font-bold">{name}</h3>
+          <h3 className="font-bold max-w-36 md:max-w-none">{name}</h3>
         </div>
 
         {isEditing ? (
@@ -57,7 +57,7 @@ const CommentCard = ({ id, name, email, body, onDeleteComment, onUpdateComment }
             </button>
           </div>
         ) : (
-          <div className="flex space-x-4">
+          <div className="flex space-x-4  scale-90 md:scale-100">
             <button
               className="text-red-500 hover:text-red-700 border border-red-500 px-3 py-1 rounded"
               onClick={handleDelete}>
