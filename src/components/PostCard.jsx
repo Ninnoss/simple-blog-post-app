@@ -1,25 +1,23 @@
-/* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
-const PostCard = ({ title, body, postId }) => {
+const PostCard = ({ title, postId }) => {
+  const date = generateRandomDate().toDateString();
+  const category = getCategoryForPostId(postId);
+
   return (
-    <div className="max-w-[350px] md:max-w-xl px-10 my-4 py-6 bg-white rounded-lg shadow-md">
+    <div className="w-[350px] w-sm px-10 my-4 py-6 bg-white rounded-lg shadow-md">
       <div className="flex justify-between items-center">
-        <span className="font-light text-gray-600">mar 10, 2019</span>
+        <span className="font-light text-gray-600">{date}</span>
         <a
           className="px-2 py-1 bg-gray-600 text-gray-100 font-bold rounded hover:bg-gray-500"
           href="#">
-          Design
+          {category}
         </a>
       </div>
       <div className="mt-2">
-        <a
-          className="text-2xl text-gray-700 font-bold hover:text-gray-600"
-          href="#">
-          {title}
-        </a>
-        <p className="mt-2 text-gray-600">{body}</p>
+        <h2 className="text-2xl text-gray-700 font-bold hover:text-gray-600 h-24 line-clamp-3">{title}</h2>
       </div>
       <div className="flex justify-between items-center mt-4">
         <Link
@@ -31,12 +29,16 @@ const PostCard = ({ title, body, postId }) => {
           <a
             className="flex items-center"
             href="#">
-            <img
-              className="mx-4 w-10 h-10 object-cover rounded-full hidden sm:block"
-              src="https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=373&q=80"
-              alt="avatar"
-            />
-            <h1 className="text-gray-700 font-bold">User</h1>
+            <div className="mx-4 w-10 h-10 relative">
+              <Image
+                src="https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=373&q=80"
+                alt="avatar"
+                layout="fill"
+                objectFit="cover"
+                className="rounded-full"
+              />
+            </div>
+            <span className="text-gray-700 font-bold">User</span>
           </a>
         </div>
       </div>
@@ -45,3 +47,13 @@ const PostCard = ({ title, body, postId }) => {
 };
 
 export default PostCard;
+
+const generateRandomDate = () => {
+  const start = new Date(2019, 0, 1);
+  const end = new Date();
+  return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+};
+
+const getCategoryForPostId = (postId) => {
+  return postId % 2 === 0 ? 'Development' : 'Design';
+};
