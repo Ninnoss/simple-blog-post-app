@@ -74,7 +74,7 @@ const CommentCard = ({ id, name, email, body, onDeleteComment, onUpdateComment }
       <p className="text-gray-600">{email}</p>
       {isEditing ? (
         <textarea
-          className="border border-gray-300 px-2 py-1 rounded w-full resize-none"
+          className="border mt-4 border-gray-300 px-2 py-1 rounded w-full resize-none min-h-24"
           value={editedBody}
           onChange={handleChange}
         />
