@@ -10,7 +10,7 @@ const PostInfo = async ({ params }) => {
   });
 
   // Create a longer body text by repeating the original body multiple times
-  const longBody = Array.from({ length: 6 }, () => post.body).join(' ');
+  const longBody = Array.from({ length: 10 }, () => post.body).join(' ');
 
   return (
     <section className="max-w-6xl mx-auto px-4 md:px-8 lg:px-16 py-8 relative">
