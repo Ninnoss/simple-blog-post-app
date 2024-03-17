@@ -12,7 +12,7 @@ const PostComments = () => {
   useEffect(() => {
     const fetchComments = async () => {
       const data = await fetchData('https://jsonplaceholder.typicode.com/comments');
-      setComments(data.slice(0, 5));
+      setComments(data.slice(0, 5)); // only show first 5 comments from the API
       setLoading(false); // Set loading to false once comments are loaded
     };
 

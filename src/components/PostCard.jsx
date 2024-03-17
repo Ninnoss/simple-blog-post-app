@@ -1,10 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { generateRandomDate } from '@/utils/generateRandomDate';
+import { getCategory } from '@/utils/getCategory';
 
 const PostCard = ({ title, postId }) => {
   const date = generateRandomDate().toDateString();
-  const category = getCategoryForPostId(postId);
+  const category = getCategory(postId);
 
   return (
     <div className="w-[350px] w-sm px-10 my-4 py-6 bg-white rounded-lg shadow-md">
@@ -47,13 +49,3 @@ const PostCard = ({ title, postId }) => {
 };
 
 export default PostCard;
-
-const generateRandomDate = () => {
-  const start = new Date(2019, 0, 1);
-  const end = new Date();
-  return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-};
-
-const getCategoryForPostId = (postId) => {
-  return postId % 2 === 0 ? 'Development' : 'Design';
-};
