@@ -20,7 +20,11 @@ const CommentForm = ({ onAddComment }) => {
       comment: '',
     });
   };
-
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      handleSubmit(e);
+    }
+  };
   return (
     <form
       onSubmit={handleSubmit}
@@ -30,6 +34,7 @@ const CommentForm = ({ onAddComment }) => {
         name="comment"
         value={formData.comment}
         onChange={handleChange}
+        onKeyDown={handleKeyDown}
         placeholder="Write a comment..."
         className="border border-gray-300 px-2 py-1 rounded w-full resize-none"
         required
