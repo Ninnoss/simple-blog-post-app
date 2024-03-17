@@ -36,7 +36,7 @@ const CommentForm = ({ onAddComment }) => {
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         placeholder="Write a comment..."
-        className="border border-gray-300 px-2 py-1 rounded w-full resize-none"
+        className="border border-gray-300 p-3 rounded w-full resize-none"
         required
       />
       <button
